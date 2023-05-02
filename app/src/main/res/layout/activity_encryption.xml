@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#c8e6c9"
+    tools:context=".EncryptionActivity">
+
+    <ImageView
+        android:id="@+id/my_image_view"
+        android:layout_width="373dp"
+        android:layout_height="123dp"
+        android:src="@drawable/img" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Implementation of TEA Algorithm"
+        android:textAlignment="center"
+        android:textColor = "@color/teal_200"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:id="@+id/key_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter key data"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/input_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter text data"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/encrypt_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Encrypt" />
+
+    <TextView
+        android:id="@+id/encrypted_data_label_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Encrypted Data:" />
+
+    <TextView
+        android:id="@+id/encrypted_data_value_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <Button
+        android:id="@+id/decrypt_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Decrypt" />
+
+    <TextView
+        android:id="@+id/decrypted_data_label_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Decrypted Data:" />
+
+    <TextView
+        android:id="@+id/decrypted_data_value_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    <Button
+        android:id="@+id/shamir_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visit the Shamir's Secret Sharing Algorithm Implementation" />
+</LinearLayout>
