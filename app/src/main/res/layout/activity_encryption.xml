@@ -12,7 +12,7 @@
         android:id="@+id/my_image_view"
         android:layout_width="373dp"
         android:layout_height="123dp"
-        android:src="@drawable/img" />
+        android:src="@drawable/img_2" />
 
     <TextView
         android:id="@+id/title"

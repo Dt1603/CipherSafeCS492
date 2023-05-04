@@ -51,10 +51,74 @@ class EncryptionActivity : AppCompatActivity() {
 
                 val encryptedData = tea.encrypt(testData.toString())
 
-                //encryptedDataTextView.text = encryptedData.contentToString()
-                val encryptedText = String(encryptedData, Charsets.UTF_8)
-                encryptedDataTextView.text = encryptedText
-                Log.d("EncryptionActivity", "Encrypted text: $encryptedText")
+                encryptedDataTextView.text = encryptedData.contentToString()
+               // val encryptedText = String(encryptedData, Charsets.UTF_8)
+              //  encryptedDataTextView.text = encryptedText
+               // Log.d("EncryptionActivity", "Encrypted text: $encryptedText")
+            } catch (e: Exception) {
+                Toast.makeText(this, "Encryption failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        decryptButton.setOnClickListener {
+            val encryptedData = encryptedDataTextView.text.toString().toByteArray()
+
+            if (encryptedData.isEmpty() || key.isEmpty()) {
+                Toast.makeText(this, "Please encrypt some data first and enter key!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            try {
+                val keyBytes = key.toByteArray()
+                val tea = TEA(keyBytes)
+
+                val decryptedData = tea.decrypt(encryptedData.toString())
+
+                decryptedDataTextView.text = decryptedData.contentToString()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Decryption failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+        val nextActivityButton = findViewById<Button>(R.id.shamir_button)
+        nextActivityButton.setOnClickListener {
+            val url = "https://www.google.com/search?q=shamir%27s+secret+sharing"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
+    }
+
+
+}
+
+
+/*
+encryptButton.setOnClickListener {
+            val inputData = inputText.text.toString()
+            key = keyText.text.toString()
+
+            if (inputData.isEmpty() || key.isEmpty()) {
+                Toast.makeText(this, "Please enter input and key!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            try {
+                val keyBytes = key.toByteArray()
+                val tea = TEA(keyBytes)
+
+                var testData = inputData.toByteArray()
+
+                if (testData.size % 8 != 0) {
+                    val padding = 8 - (testData.size % 8)
+                    testData = testData.copyOf(testData.size + padding)
+                }
+
+                val encryptedData = tea.encrypt(testData.toString())
+
+                encryptedDataTextView.text = encryptedData.contentToString()
+               // val encryptedText = String(encryptedData, Charsets.UTF_8)
+              //  encryptedDataTextView.text = encryptedText
+               // Log.d("EncryptionActivity", "Encrypted text: $encryptedText")
             } catch (e: Exception) {
                 Toast.makeText(this, "Encryption failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
@@ -79,14 +143,4 @@ class EncryptionActivity : AppCompatActivity() {
                 Toast.makeText(this, "Decryption failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
-        val nextActivityButton = findViewById<Button>(R.id.shamir_button)
-        nextActivityButton.setOnClickListener {
-            val url = "https://www.google.com/search?q=shamir%27s+secret+sharing"
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            startActivity(intent)
-        }
-    }
-
-
-}
+ */
